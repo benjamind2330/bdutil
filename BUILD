@@ -1,9 +1,11 @@
 
-
 cc_test(
-    name = "iterator_base_test",
+    name = "bdutil_tests",
     size = "small",
-    srcs = ["tests/meta/iterator_base_tests.cpp"],
+    srcs = [
+        "tests/meta/iterator_base_tests.cpp", 
+        "tests/utility/typesafe_id_tests.cpp"
+        ],
     deps = [
         "//bdutil:bdutil",
         "@googletest//:gtest",

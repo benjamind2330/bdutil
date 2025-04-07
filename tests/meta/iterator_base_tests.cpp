@@ -22,41 +22,41 @@ enum class city : int {
 
 std::string to_string(city c) {
   switch (c) {
-    case city::brisbane:
-      return "brisbane";
-    case city::sydney:
-      return "sydney";
-    case city::melbourne:
-      return "melbourne";
-    case city::hobart:
-      return "hobart";
-    case city::perth:
-      return "perth";
-    case city::adelaide:
-      return "adelaide";
-    case city::darwin:
-      return "darwin";
-    case city::canberra:
-      return "canberra";
+  case city::brisbane:
+    return "brisbane";
+  case city::sydney:
+    return "sydney";
+  case city::melbourne:
+    return "melbourne";
+  case city::hobart:
+    return "hobart";
+  case city::perth:
+    return "perth";
+  case city::adelaide:
+    return "adelaide";
+  case city::darwin:
+    return "darwin";
+  case city::canberra:
+    return "canberra";
   }
 }
 
 class citirator : public iterator_base<citirator> {
- public:
+public:
   citirator() = default;
   citirator(city c) : m_pos{std::to_underlying(c)} {}
   city dereference() const { return static_cast<city>(m_pos); }
   void advance(std::ptrdiff_t off) { m_pos += off; }
-  std::ptrdiff_t distance_to(const citirator& other) const {
+  std::ptrdiff_t distance_to(const citirator &other) const {
     return other.m_pos - m_pos;
   }
 
- private:
+private:
   int m_pos = 0;
 };
 
 class city_range {
- public:
+public:
   citirator begin() const { return citirator{}; }
   citirator end() const {
     return citirator{static_cast<city>(std::to_underlying(city::canberra) + 1)};
